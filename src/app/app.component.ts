@@ -11,4 +11,8 @@ export class AppComponent {
 		title: 'Fruits',
 		answers: ['banana', 'apple']
 	}
+
+	addWord(form){
+		console.log("adding word", form)
+	}
 }

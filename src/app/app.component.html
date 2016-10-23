@@ -2,4 +2,10 @@
 
 <h2> {{level.title}} </h2>
 
-<input type="text">
+<div>
+	<label>Your guess</label>
+	<form (ngSubmit)="addWord(userForm)" #userForm="ngForm">
+		<input type="text" name="guess" placeholder="Type one or more words" ngModel>
+		<button type="submit">Add</button>
+	</form>
+</div>
