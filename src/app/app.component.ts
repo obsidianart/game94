@@ -23,7 +23,9 @@ export class AppComponent {
 	}
 
 	addWord(word){
-		this.guesses.push(word)
+		if (!this.guesses.some(guess=>guess==word)){
+			this.guesses.push(word)	
+		}
 	}
 
 	checkWord(form){
@@ -36,7 +38,5 @@ export class AppComponent {
 				(answer)=>{console.log("no")}
 			)
 			.catch((err)=>{console.log(err)})
-
-		console.log("adding word", form.value.guess)
 	}
 }
