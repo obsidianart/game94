@@ -15,6 +15,14 @@ export class AppComponent {
 	}
 
 	addWord(form){
+		this.gameService
+			.isAnswerForLevel(form.value.guess)
+			.then(
+				(answer)=>{console.log("yes")},
+				(answer)=>{console.log("no")}
+			)
+			.catch((err)=>{console.log(err)})
+
 		console.log("adding word", form.value.guess)
 	}
 }

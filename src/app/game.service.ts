@@ -16,4 +16,11 @@ export class GameService {
 		})
 	}
 
+	isAnswerForLevel(_answer:string):Promise<Boolean> {
+		return new Promise((resolve,reject)=>{
+			let answer = this.level.answers.find(ans=>ans.toLowerCase()==_answer.toLowerCase())
+			answer?resolve(answer):reject(_answer)
+		})
+	}
+
 }
