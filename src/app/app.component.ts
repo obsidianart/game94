@@ -1,4 +1,5 @@
 import { Component } from '@angular/core'
+import { GameService }from './game.service'
 import { Level } from './level'
 
 @Component({
@@ -7,12 +8,13 @@ import { Level } from './level'
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-	level:Level = {
-		title: 'Fruits',
-		answers: ['banana', 'apple']
+	level:Level
+
+	constructor(private gameService:GameService) {
+		this.level = gameService.getLevel()
 	}
 
 	addWord(form){
-		console.log("adding word", form)
+		console.log("adding word", form.value.guess)
 	}
 }
