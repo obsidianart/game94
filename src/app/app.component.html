@@ -12,7 +12,7 @@
 			<button type="submit">Add</button>
 		</form>
 		<h3>Correct guesses</h3>
-		<div *ngFor="let guess of guesses">{{guess}}</div>
+		<div *ngFor="let guess of guesses">{{guess.word}} - {{guess.percentage}}</div>
 	</div>
 	<div [hidden]="!isWinner">
 		<button (click)="nextLevel()">Next level</button>

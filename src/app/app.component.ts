@@ -11,7 +11,7 @@ export class AppComponent {
 	level:Level
 	isWinner: boolean
 	levelName:string
-	guesses:string[]
+	guesses:any[]
 
 	constructor(private gameService:GameService) {
 		this.startLevel('fruits')
@@ -22,13 +22,13 @@ export class AppComponent {
 		this.guesses = []
 		this.isWinner = false
 		this.level = undefined
+
 		this.gameService
 			.getLevel(this.levelName)
 			.then(level=>{this.level=level})
 	}
 
 	nextLevel(){
-		console.log("next level")
 		this.startLevel(this.level.next)
 	}
 
@@ -50,7 +50,7 @@ export class AppComponent {
 		this.gameService
 			.isAnswerForLevel(word, this.levelName)
 			.then(
-				(answer)=>{this.addWord(word)},
+				(answer)=>{this.addWord(answer)},
 				(answer)=>{console.log("no")}
 			)
 			.catch((err)=>{console.log(err)})

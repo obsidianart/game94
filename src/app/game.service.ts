@@ -6,17 +6,26 @@ export class GameService {
 	levels = {
 		fruits:{
 			title: 'Fruits',
-			answers: ['banana', 'apple'],
+			answers: [
+				{word:'banana',percentage:60},
+				{word:'apple' ,percentage:34},
+			],
 			next: 'vegetables',
 		},
 		vegetables:{
 			title: 'Vegetables',
-			answers: ['cucumber', 'leek'],
+			answers: [
+				{word:'cucumber',percentage:50},
+				{word:'leek'    ,percentage:44},
+			],
 			next: 'birds',
 		},
 		birds:{
 			title: 'Birds',
-			answers: ['pidgeon', 'robin'],
+			answers: [
+				{word:'pigeon',percentage:31},
+				{word:'robin' ,percentage:53},
+			],
 			next: '',
 		}
 	}
@@ -38,7 +47,7 @@ export class GameService {
 
 	isAnswerForLevel(_answer:string, levelName:string):Promise<Boolean> {
 		return new Promise((resolve,reject)=>{
-			let answer = this.levels[levelName].answers.find(ans=>ans.toLowerCase()==_answer.toLowerCase())
+			let answer = this.levels[levelName].answers.find(ans=>ans.word.toLowerCase()==_answer.toLowerCase())
 			answer?resolve(answer):reject(_answer)
 		})
 	}
