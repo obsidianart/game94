@@ -10,17 +10,29 @@ import { Level } from './level'
 export class AppComponent {
 	level:Level
 	levelName:string
+	guesses:string[]
 
 	constructor(private gameService:GameService) {
-		this.levelName = 'fruits'
+		this.startLevel('fruits')
 		gameService.getLevel(this.levelName).then(level=>this.level=level)
 	}
 
-	addWord(form){
+	startLevel(levelName:string){
+		this.levelName = levelName
+		this.guesses = []
+	}
+
+	addWord(word){
+		this.guesses.push(word)
+	}
+
+	checkWord(form){
+		let word = form.value.guess
+
 		this.gameService
-			.isAnswerForLevel(form.value.guess, this.levelName)
+			.isAnswerForLevel(word, this.levelName)
 			.then(
-				(answer)=>{console.log("yes")},
+				(answer)=>{this.addWord(word)},
 				(answer)=>{console.log("no")}
 			)
 			.catch((err)=>{console.log(err)})

@@ -5,10 +5,13 @@
 	<h2> {{level.title}} </h2>
 
 	<div>
-		<label>Your guess</label>
-		<form (ngSubmit)="addWord(userForm)" #userForm="ngForm">
-			<input type="text" name="guess" placeholder="Type one or more words" ngModel>
+		<form (ngSubmit)="checkWord(userForm)" #userForm="ngForm">
+			<label>Your guess
+				<input type="text" name="guess" placeholder="Type one or more words" ngModel>
+			</label>
 			<button type="submit">Add</button>
 		</form>
+		<h3>Correct guesses</h3>
+		<div *ngFor="let guess of guesses">{{guess}}</div>
 	</div>
 </div>
