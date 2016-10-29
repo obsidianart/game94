@@ -11,7 +11,7 @@ export class AppComponent {
 	level:Level
 
 	constructor(private gameService:GameService) {
-		this.level = gameService.getLevel()
+		gameService.getLevel().then(level=>this.level=level)
 	}
 
 	addWord(form){

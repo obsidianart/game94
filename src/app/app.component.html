@@ -1,11 +1,14 @@
 <h1>94%</h1>
+<h2 *ngIf="!level"> Loading </h2>
 
-<h2> {{level.title}} </h2>
+<div *ngIf="level">
+	<h2> {{level.title}} </h2>
 
-<div>
-	<label>Your guess</label>
-	<form (ngSubmit)="addWord(userForm)" #userForm="ngForm">
-		<input type="text" name="guess" placeholder="Type one or more words" ngModel>
-		<button type="submit">Add</button>
-	</form>
+	<div>
+		<label>Your guess</label>
+		<form (ngSubmit)="addWord(userForm)" #userForm="ngForm">
+			<input type="text" name="guess" placeholder="Type one or more words" ngModel>
+			<button type="submit">Add</button>
+		</form>
+	</div>
 </div>

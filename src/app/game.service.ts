@@ -10,8 +10,10 @@ export class GameService {
 
 	constructor() { }
 
-	getLevel():Level {
-		return this.level
+	getLevel():Promise<Level> {
+		return new Promise(resolve=>{
+			setTimeout(()=>resolve(this.level), 1000)
+		})
 	}
 
 }
