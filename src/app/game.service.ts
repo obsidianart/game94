@@ -6,23 +6,27 @@ export class GameService {
 	levels = {
 		fruits:{
 			title: 'Fruits',
-			answers: ['banana', 'apple']
+			answers: ['banana', 'apple'],
+			next: 'vegetables',
 		},
 		vegetables:{
 			title: 'Vegetables',
-			answers: ['cucumber', 'leek']
+			answers: ['cucumber', 'leek'],
+			next: 'birds',
 		},
 		birds:{
 			title: 'Birds',
-			answers: ['pidgeon', 'robin']
+			answers: ['pidgeon', 'robin'],
+			next: '',
 		}
 	}
 
-	private mapLevel(level:Level):Object{
+	private mapLevel(level:Level):Level{
 		return {
 			title:level.title,
 			answers:[],
-			answersLength:level.answers.length
+			answersLength:level.answers.length,
+			next:level.next
 		}
 	}
 

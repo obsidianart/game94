@@ -15,6 +15,6 @@
 		<div *ngFor="let guess of guesses">{{guess}}</div>
 	</div>
 	<div [hidden]="!isWinner">
-		<button (ngClick)="nextLevel()">Next level</button>
+		<button (click)="nextLevel()">Next level</button>
 	</div>
 </div>

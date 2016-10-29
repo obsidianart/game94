@@ -15,17 +15,21 @@ export class AppComponent {
 
 	constructor(private gameService:GameService) {
 		this.startLevel('fruits')
-		gameService.getLevel(this.levelName).then(level=>this.level=level)
 	}
 
 	startLevel(levelName:string){
 		this.levelName = levelName
 		this.guesses = []
 		this.isWinner = false
+		this.level = undefined
+		this.gameService
+			.getLevel(this.levelName)
+			.then(level=>{this.level=level})
 	}
 
 	nextLevel(){
-
+		console.log("next level")
+		this.startLevel(this.level.next)
 	}
 
 	checkWin(){
