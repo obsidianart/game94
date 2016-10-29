@@ -9,6 +9,7 @@ import { Level } from './level'
 })
 export class AppComponent {
 	level:Level
+	isWinner: boolean
 	levelName:string
 	guesses:string[]
 
@@ -20,12 +21,22 @@ export class AppComponent {
 	startLevel(levelName:string){
 		this.levelName = levelName
 		this.guesses = []
+		this.isWinner = false
+	}
+
+	nextLevel(){
+
+	}
+
+	checkWin(){
+		this.isWinner = this.level.answersLength === this.guesses.length
 	}
 
 	addWord(word){
 		if (!this.guesses.some(guess=>guess==word)){
 			this.guesses.push(word)	
 		}
+		this.checkWin()
 	}
 
 	checkWord(form){

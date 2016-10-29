@@ -4,23 +4,31 @@ import { Level } from './level'
 @Injectable()
 export class GameService {
 	levels = {
-		fruits: <Level>{
+		fruits:{
 			title: 'Fruits',
 			answers: ['banana', 'apple']
 		},
-		vegetables: <Level>{
+		vegetables:{
 			title: 'Vegetables',
 			answers: ['cucumber', 'leek']
 		},
-		birds: <Level>{
+		birds:{
 			title: 'Birds',
 			answers: ['pidgeon', 'robin']
 		}
 	}
 
+	private mapLevel(level:Level):Object{
+		return {
+			title:level.title,
+			answers:[],
+			answersLength:level.answers.length
+		}
+	}
+
 	getLevel(levelName:string):Promise<Level> {
 		return new Promise(resolve=>{
-			setTimeout(()=>resolve(this.levels[levelName]), 300)
+			setTimeout(()=>resolve(this.mapLevel(this.levels[levelName])), 300)
 		})
 	}
 
