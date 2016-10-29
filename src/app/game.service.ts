@@ -18,17 +18,15 @@ export class GameService {
 		}
 	}
 
-	constructor() { }
-
-	getLevel():Promise<Level> {
+	getLevel(levelName:string):Promise<Level> {
 		return new Promise(resolve=>{
-			setTimeout(()=>resolve(this.levels.fruits), 1000)
+			setTimeout(()=>resolve(this.levels[levelName]), 300)
 		})
 	}
 
-	isAnswerForLevel(_answer:string):Promise<Boolean> {
+	isAnswerForLevel(_answer:string, levelName:string):Promise<Boolean> {
 		return new Promise((resolve,reject)=>{
-			let answer = this.levels.fruits.answers.find(ans=>ans.toLowerCase()==_answer.toLowerCase())
+			let answer = this.levels[levelName].answers.find(ans=>ans.toLowerCase()==_answer.toLowerCase())
 			answer?resolve(answer):reject(_answer)
 		})
 	}
