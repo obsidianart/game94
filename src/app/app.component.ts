@@ -30,6 +30,7 @@ export class AppComponent {
 
 	checkWord(form){
 		let word = form.value.guess
+		form.reset()
 
 		this.gameService
 			.isAnswerForLevel(word, this.levelName)
