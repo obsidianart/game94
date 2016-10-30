@@ -1,6 +1,4 @@
 import { Component } from '@angular/core'
-import { GameService }from './game.service'
-import { Level } from './level'
 
 @Component({
   selector: 'app-root',
@@ -8,51 +6,5 @@ import { Level } from './level'
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-	level:Level
-	isWinner: boolean
-	levelName:string
-	guesses:any[]
 
-	constructor(private gameService:GameService) {
-		this.startLevel('fruits')
-	}
-
-	startLevel(levelName:string){
-		this.levelName = levelName
-		this.guesses = []
-		this.isWinner = false
-		this.level = undefined
-
-		this.gameService
-			.getLevel(this.levelName)
-			.then(level=>{this.level=level})
-	}
-
-	nextLevel(){
-		this.startLevel(this.level.next)
-	}
-
-	checkWin(){
-		this.isWinner = this.level.answersLength === this.guesses.length
-	}
-
-	addWord(word){
-		if (!this.guesses.some(guess=>guess==word)){
-			this.guesses.push(word)	
-		}
-		this.checkWin()
-	}
-
-	checkWord(form){
-		let word = form.value.guess
-		form.reset()
-
-		this.gameService
-			.isAnswerForLevel(word, this.levelName)
-			.then(
-				(answer)=>{this.addWord(answer)},
-				(answer)=>{console.log("no")}
-			)
-			.catch((err)=>{console.log(err)})
-	}
 }
