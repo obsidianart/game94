@@ -17,6 +17,7 @@ export class GameComponent implements OnInit {
 	constructor(private gameService:GameService, private route: ActivatedRoute, private router: Router) {}
 
 	ngOnInit() {
+		//this.startLevel(this.route.snapshot.params['levelName'])
 		this.route.params.forEach((params: Params) => {
 			this.startLevel(params['levelName'])
 		});
