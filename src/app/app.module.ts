@@ -25,6 +25,10 @@ import { GameService }from './game.service'
         component: HomepageComponent
       },
       {
+        path: 'game',
+        redirectTo: '/game/fruits'
+      },
+      {
         path: 'game/:levelName',
         component: GameComponent
       }
