@@ -20,7 +20,7 @@ export class GameComponent implements OnInit {
 		//this.startLevel(this.route.snapshot.params['levelName'])
 		this.route.params.forEach((params: Params) => {
 			this.startLevel(params['levelName'])
-		});
+		})
 	}
 
 	startLevel(levelName:string){
@@ -32,6 +32,7 @@ export class GameComponent implements OnInit {
 		this.gameService
 			.getLevel(this.levelName)
 			.then(level=>{this.level=level})
+			.catch(err=>console.warn(err))
 	}
 
 	nextLevel(){

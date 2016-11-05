@@ -40,8 +40,14 @@ export class GameService {
 	}
 
 	getLevel(levelName:string):Promise<Level> {
-		return new Promise(resolve=>{
-			setTimeout(()=>resolve(this.mapLevel(this.levels[levelName])), 300)
+		return new Promise((resolve, reject)=>{
+			setTimeout(()=>{
+				if (levelName in this.levels){
+					resolve(this.mapLevel(this.levels[levelName]))
+				} else {
+					reject("level doesn't exist")
+				}
+			}, 300)
 		})
 	}
 
