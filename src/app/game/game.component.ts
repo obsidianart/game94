@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core'
+import { Router, ActivatedRoute, Params } from '@angular/router'
 import { GameService }from '../game.service'
 import { Level } from '../level'
 
@@ -13,11 +14,13 @@ export class GameComponent implements OnInit {
 	levelName:string
 	guesses:any[]
 
-	constructor(private gameService:GameService) {
-		this.startLevel('fruits')
-	}
+	constructor(private gameService:GameService, private route: ActivatedRoute, private router: Router) {}
 
-	ngOnInit() {}
+	ngOnInit() {
+		this.route.params.forEach((params: Params) => {
+			this.startLevel(params['levelName'])
+		});
+	}
 
 	startLevel(levelName:string){
 		this.levelName = levelName

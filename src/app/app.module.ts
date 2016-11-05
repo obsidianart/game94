@@ -25,7 +25,7 @@ import { GameService }from './game.service'
         component: HomepageComponent
       },
       {
-        path: 'game',
+        path: 'game/:levelName',
         component: GameComponent
       }
     ])
